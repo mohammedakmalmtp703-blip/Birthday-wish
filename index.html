@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Journey for You</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff5f8 0%, #fce4ec 100%);
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; margin: 0; font-family: sans-serif; text-align: center;
+        }
+        .card {
+            background: white; padding: 40px; border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 400px;
+        }
+        h1 { color: #ff4d6d; }
+        p { color: #555; font-size: 1.1rem; line-height: 1.6; min-height: 80px; }
+        .btn {
+            background: #ff4d6d; color: white; border: none;
+            padding: 15px 30px; border-radius: 50px; font-weight: bold;
+            cursor: pointer; margin-top: 20px; width: 100%;
+        }
+        .hidden { display: none; }
+        .emoji { font-size: 50px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="p1">
+            <div class="emoji">🎁</div>
+            <h1>Hey!</h1>
+            <p>I have a special message for you. Are you ready to see it?</p>
+            <button class="btn" onclick="go(2)">Yes, let's go!</button>
+        </div>
+
+        <div id="p2" class="hidden">
+            <div class="emoji">🌟</div>
+            <h1>Before we start...</h1>
+            <p>I just wanted to say that you are one of the most special people in my life.</p>
+            <button class="btn" onclick="go(3)">Next</button>
+        </div>
+
+        <div id="p3" class="hidden">
+            <div class="emoji">🎂</div>
+            <h1>Happy Birthday!</h1>
+            <p>I hope your day is as beautiful and amazing as you are. You deserve the world!</p>
+            <button class="btn" onclick="go(4)">One last thing...</button>
+        </div>
+
+        <div id="p4" class="hidden">
+            <div class="emoji">💖</div>
+            <h1>Keep Shining</h1>
+            <p>Thank you for being you. Have a wonderful birthday celebration! 🎉</p>
+            <div class="emoji">🎈🎊🍰</div>
+        </div>
+    </div>
+
+    <script>
+        function go(n) {
+            document.getElementById('p1').classList.add('hidden');
+            document.getElementById('p2').classList.add('hidden');
+            document.getElementById('p3').classList.add('hidden');
+            document.getElementById('p4').classList.add('hidden');
+            document.getElementById('p' + n).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
