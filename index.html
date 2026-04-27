@@ -3,68 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Journey for You</title>
+    <title>For You</title>
     <style>
         body {
-            background: linear-gradient(135deg, #fff5f8 0%, #fce4ec 100%);
+            margin: 0; padding: 0;
+            background: #fff0f3;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex; justify-content: center; align-items: center;
-            height: 100vh; margin: 0; font-family: sans-serif; text-align: center;
+            height: 100vh; overflow: hidden; color: #4a1c22;
         }
+
+        .heart {
+            position: absolute; color: rgba(255, 77, 109, 0.4);
+            font-size: 20px; animation: float 6s linear infinite; z-index: 1;
+        }
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
         .card {
-            background: white; padding: 40px; border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 400px;
+            background: white;
+            padding: 35px; border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center; width: 80%; max-width: 350px;
+            position: relative; z-index: 10;
         }
-        h1 { color: #ff4d6d; }
-        p { color: #555; font-size: 1.1rem; line-height: 1.6; min-height: 80px; }
+
+        h1 { color: #ff4d6d; font-size: 1.6rem; margin-bottom: 15px; font-weight: 600; }
+        p { font-size: 1.05rem; line-height: 1.5; min-height: 80px; margin-bottom: 20px; color: #555; }
+
         .btn {
             background: #ff4d6d; color: white; border: none;
-            padding: 15px 30px; border-radius: 50px; font-weight: bold;
-            cursor: pointer; margin-top: 20px; width: 100%;
+            padding: 14px 28px; border-radius: 12px; font-size: 1rem;
+            cursor: pointer; font-weight: 500; width: 100%;
         }
+        .btn:active { transform: scale(0.97); }
         .hidden { display: none; }
-        .emoji { font-size: 50px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
     <div class="card">
-        <div id="p1">
-            <div class="emoji">🎁</div>
-            <h1>Hey!</h1>
-            <p>I have a special message for you. Are you ready to see it?</p>
-            <button class="btn" onclick="go(2)">Yes, let's go!</button>
+        <div id="s1">
+            <h1>Hey you... ❤️</h1>
+            <p>I was sitting here thinking about you and I wanted to make you something. It’s not much, but it’s from me to you. Want to see?</p>
+            <button class="btn" onclick="go(2)">Yeah, show me</button>
         </div>
 
-        <div id="p2" class="hidden">
-            <div class="emoji">🌟</div>
-            <h1>Before we start...</h1>
-            <p>I just wanted to say that you are one of the most special people in my life.</p>
-            <button class="btn" onclick="go(3)">Next</button>
+        <div id="s2" class="hidden">
+            <h1>You know...</h1>
+            <p>I don't say it enough, but you really are my favorite person. Just talking to you makes even my worst days feel okay.</p>
+            <button class="btn" onclick="go(3)">Keep going...</button>
         </div>
 
-        <div id="p3" class="hidden">
-            <div class="emoji">🎂</div>
-            <h1>Happy Birthday!</h1>
-            <p>I hope your day is as beautiful and amazing as you are. You deserve the world!</p>
-            <button class="btn" onclick="go(4)">One last thing...</button>
+        <div id="s3" class="hidden">
+            <h1>Since it's your day...</h1>
+            <p>I hope you feel as special as you make me feel. You deserve the best of everything, today and every day.</p>
+            <button class="btn" onclick="go(4)">Last thing</button>
         </div>
 
-        <div id="p4" class="hidden">
-            <div class="emoji">💖</div>
-            <h1>Keep Shining</h1>
-            <p>Thank you for being you. Have a wonderful birthday celebration! 🎉</p>
-            <div class="emoji">🎈🎊🍰</div>
+        <div id="s4" class="hidden">
+            <h1>Happy Birthday, beautiful! 🎂</h1>
+            <p>I'm just really glad you were born. I’m so lucky I get to be part of your life. Have the best day ever, okay? ❤️</p>
+            <div style="font-size: 30px; margin-top: 10px;">🎈🌹✨</div>
         </div>
     </div>
 
     <script>
         function go(n) {
-            document.getElementById('p1').classList.add('hidden');
-            document.getElementById('p2').classList.add('hidden');
-            document.getElementById('p3').classList.add('hidden');
-            document.getElementById('p4').classList.add('hidden');
-            document.getElementById('p' + n).classList.remove('hidden');
+            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('s' + n).classList.remove('hidden');
         }
     </script>
 </body>
 </html>
+
