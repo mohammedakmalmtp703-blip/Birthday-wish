@@ -9,10 +9,11 @@
         .emoji-bg { position: absolute; font-size: 25px; animation: floatUp 7s linear infinite; z-index: 1; opacity: 0.6; bottom: -50px; }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.6; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
         .card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 35px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2); text-align: center; width: 80%; max-width: 350px; position: relative; z-index: 10; border: 1.5px solid white; }
-        h1 { color: #ff4d6d; font-size: 1.6rem; }
-        .btn { background: #ff4d6d; color: white; border: none; padding: 16px; border-radius: 15px; font-size: 1rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; }
+        h1 { color: #ff4d6d; font-size: 1.6rem; margin-bottom: 15px; }
+        p { font-size: 1.1rem; line-height: 1.5; color: #444; margin-bottom: 20px; }
+        .btn { background: #ff4d6d; color: white; border: none; padding: 16px; border-radius: 15px; font-size: 1rem; cursor: pointer; font-weight: bold; width: 100%; }
         .hidden { display: none; }
-        #timerDisplay { font-size: 1.5rem; color: #ff4d6d; font-weight: bold; margin-top: 10px; }
+        #timerDisplay { font-size: 2rem; color: #ff4d6d; font-weight: bold; margin-top: 15px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -29,12 +30,13 @@
             e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
             e.style.left = Math.random() * 100 + 'vw';
             e.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            e.style.animationDelay = Math.random() * 5 + 's';
             document.body.appendChild(e);
         }
 
-        // Target Time: Today at 6:27 PM (18:27)
+        // Target Time: Exactly 6:40 PM Today
         const targetTime = new Date();
-        targetTime.setHours(18, 27, 0, 0); 
+        targetTime.setHours(18, 40, 0, 0); 
 
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -56,7 +58,7 @@
 
         function go(n) {
             let music = document.getElementById('bgMusic');
-            music.play();
+            music.play().catch(e => console.log("Audio play error"));
             document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
             document.getElementById('s' + n).classList.remove('hidden');
         }
@@ -64,14 +66,14 @@
 
     <div class="card">
         <div id="s_wait">
-            <h1>Hold on... ⏳</h1>
-            <p>Your surprise unlocks exactly at 6:27 PM!</p>
+            <h1>Wait for it... ⏳</h1>
+            <p>Your surprise unlocks exactly at 6:40 PM!</p>
             <div id="timerDisplay"></div>
         </div>
 
         <div id="s1" class="hidden">
             <h1>Hey you... ❤️</h1>
-            <p>Ready for your surprise? Click below!</p>
+            <p>Ready to see your birthday surprise?</p>
             <button class="btn" onclick="go(2)">Yeah, show me</button>
         </div>
 
@@ -89,10 +91,9 @@
 
         <div id="s4" class="hidden">
             <h1>Happy Birthday, beautiful! 🎂</h1>
-            <p>I'm just really glad you were born. I’m so lucky I get to be part of your life. Have the best day ever! ❤️</p>
+            <p>I'm so lucky I get to be part of your life. Have the best day ever! ❤️</p>
             <div style="font-size: 35px; margin-top: 10px;">🌹🎁✨</div>
         </div>
     </div>
 </body>
 </html>
-        
