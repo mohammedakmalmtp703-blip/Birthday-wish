@@ -32,14 +32,21 @@
             e.style.animationDuration = (Math.random() * 3 + 5) + 's';
             document.body.appendChild(e);
         }
+function go(n) {
+    let music = document.getElementById('bgMusic');
+    
+    // Music play panna try panrom
+    music.play().then(() => {
+        console.log("Music playing!");
+    }).catch(e => {
+        console.log("Music block aagiduchu: ", e);
+        // Oru vela block aana, user-a thirumba click panna vaikalam
+    });
 
-        function go(n) {
-            let music = document.getElementById('bgMusic');
-            music.play().catch(e => console.log("Play error"));
-            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
-            document.getElementById('s' + n).classList.remove('hidden');
-        }
-    </script>
+    document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
+    document.getElementById('s' + n).classList.remove('hidden');
+}
+        
 
     <div class="card">
         <div id="s1">
