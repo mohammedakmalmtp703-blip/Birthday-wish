@@ -1,93 +1,67 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You</title>
+    <title>For You ❤️</title>
     <style>
-        body {
-            margin: 0; padding: 0;
-            background: #fff0f3;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden; color: #4a1c22;
-        }
-
-        .heart {
-            position: absolute; color: rgba(255, 77, 109, 0.4);
-            font-size: 20px; animation: float 6s linear infinite; z-index: 1;
-        }
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        .card {
-            background: white;
-            padding: 35px; border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center; width: 80%; max-width: 350px;
-            position: relative; z-index: 10;
-        }
-
-        h1 { color: #ff4d6d; font-size: 1.6rem; margin-bottom: 15px; font-weight: 600; }
-        p { font-size: 1.05rem; line-height: 1.5; min-height: 80px; margin-bottom: 20px; color: #555; }
-
-        .btn {
-            background: #ff4d6d; color: white; border: none;
-            padding: 14px 28px; border-radius: 12px; font-size: 1rem;
-            cursor: pointer; font-weight: 500; width: 100%;
-        }
-        .btn:active { transform: scale(0.97); }
+        body { margin: 0; padding: 0; background: #fff0f3; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; color: #4a1c22; }
+        .emoji-bg { position: absolute; font-size: 25px; animation: floatUp 7s linear infinite; z-index: 1; opacity: 0.6; bottom: -50px; }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.6; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+        .card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 35px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2); text-align: center; width: 80%; max-width: 350px; position: relative; z-index: 10; border: 1.5px solid white; }
+        h1 { color: #ff4d6d; font-size: 1.6rem; }
+        .btn { background: #ff4d6d; color: white; border: none; padding: 16px; border-radius: 15px; font-size: 1rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; }
         .hidden { display: none; }
     </style>
 </head>
 <body>
 
+    <audio id="bgMusic" loop>
+        <source src="Neethanadi-MassTamilan.fm.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        for (let i = 0; i < 15; i++) {
-            let heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            document.body.appendChild(heart);
+        const emojis = ['❤️', '🎂', '💖', '✨'];
+        for (let i = 0; i < 20; i++) {
+            let e = document.createElement('div');
+            e.className = 'emoji-bg';
+            e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            e.style.left = Math.random() * 100 + 'vw';
+            e.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(e);
+        }
+
+        function go(n) {
+            let music = document.getElementById('bgMusic');
+            music.play().catch(e => console.log("Play error"));
+            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('s' + n).classList.remove('hidden');
         }
     </script>
 
     <div class="card">
         <div id="s1">
             <h1>Hey you... ❤️</h1>
-            <p>I was sitting here thinking about you and I wanted to make you something. It’s not much, but it’s from me to you. Want to see?</p>
+            <p>Sitting here thinking about you... I made something small for you. Ready?</p>
             <button class="btn" onclick="go(2)">Yeah, show me</button>
         </div>
-
         <div id="s2" class="hidden">
             <h1>You know...</h1>
-            <p>I don't say it enough, but you really are my favorite person. Just talking to you makes even my worst days feel okay.</p>
+            <p>I don't say it enough, but you are my favorite person. Talking to you makes everything feel okay.</p>
             <button class="btn" onclick="go(3)">Keep going...</button>
         </div>
-
         <div id="s3" class="hidden">
             <h1>Since it's your day...</h1>
-            <p>I hope you feel as special as you make me feel. You deserve the best of everything, today and every day.</p>
+            <p>I hope you feel as special as you make me feel. You deserve the best, today and always.</p>
             <button class="btn" onclick="go(4)">Last thing</button>
         </div>
-
         <div id="s4" class="hidden">
             <h1>Happy Birthday, beautiful! 🎂</h1>
-            <p>I'm just really glad you were born. I’m so lucky I get to be part of your life. Have the best day ever, okay? ❤️</p>
-            <div style="font-size: 30px; margin-top: 10px;">🎈🌹✨</div>
+            <p>I'm so lucky I get to be part of your life. Have the best day ever! ❤️</p>
+            <div style="font-size: 35px; margin-top: 10px;">🌹🎁✨</div>
         </div>
     </div>
-
-    <script>
-        function go(n) {
-            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
-            document.getElementById('s' + n).classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
-
