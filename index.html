@@ -18,11 +18,10 @@
 <body>
 
     <audio id="bgMusic" loop>
-        <source src="Neethanadi-MassTamilan.fm.mp3" type="audio/mpeg">
+        <source src="Neethanadi-MassTamilan.fm.mp3#t=25" type="audio/mpeg">
     </audio>
 
     <script>
-        // Floating hearts and cakes
         const emojis = ['❤️', '🎂', '💖', '✨'];
         for (let i = 0; i < 20; i++) {
             let e = document.createElement('div');
@@ -35,7 +34,6 @@
         }
 
         function go(n) {
-            // Start music on first button click
             let music = document.getElementById('bgMusic');
             music.play().catch(err => console.log("Audio block: " + err));
 
@@ -50,25 +48,21 @@
             <p>I was sitting here thinking about you and I wanted to make you something. Ready to see?</p>
             <button class="btn" onclick="go(2)">Yeah, show me</button>
         </div>
-
         <div id="s2" class="hidden">
             <h1>You know...</h1>
             <p>I don't say it enough, but you really are my favorite person. Just talking to you makes everything feel okay.</p>
             <button class="btn" onclick="go(3)">Keep going...</button>
         </div>
-
         <div id="s3" class="hidden">
             <h1>Since it's your day...</h1>
             <p>I hope you feel as special as you make me feel. You deserve the best of everything, today and every day.</p>
             <button class="btn" onclick="go(4)">Last thing</button>
         </div>
-
         <div id="s4" class="hidden">
             <h1>Happy Birthday, beautiful! 🎂</h1>
             <p>I'm just really glad you were born. I’m so lucky I get to be part of your life. Have the best day ever! ❤️</p>
             <div style="font-size: 35px; margin-top: 10px;">🌹🎁✨</div>
         </div>
     </div>
-
 </body>
 </html>
